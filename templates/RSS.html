@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Custom fonts for this template-->
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/sb-admin.css') }}">
+  <!-- Custom styles for this template-->
+   <!-- Bootstrap core JavaScript-->
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+  <!-- Core plugin JavaScript-->
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin - Dashboard</title>
+
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+
+    <!-- Navbar Search -->
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+
+    </ul>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" >
+          <span id = "Username">{{name}}</span>
+        </a>
+      </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid" id = "Container">
+
+        <!-- Breadcrumbs-->
+        <div class="card mb-3">
+    
+          <div class="card-header"><div class="row col-12"><input type="text" id = "FeedURL" class="form-control col-7" placeholder="Type your url here..." aria-label="Search" aria-describedby="basic-addon2">
+		  <button type="button" class="btn btn-success col-sm-2 ml-1" id = "SaveButton" onclick="Save()">Save</button>
+              <button type="button" class="btn btn-danger col-sm-2 ml-1" id = "GetFeedButton" onclick="GetFeed()">Get Feed</button></div></div>
+		  <div class="card-body" id = "SearchFeedBody">
+			
+		  </div>
+            </div>
+			
+			<div class="card mb-3">
+          <div class="card-header">
+            <i>Heres a list of all Feeds that have updated since you were last here. </i>
+            </div><div class="row">
+			
+{% for Record in Consolidated_List %}
+
+  <div class="col-sm-4
+            ">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{Record.Title}}</h5>
+        <p class="card-text">{{Record.Summary}}</p>
+        <a href="{{Record.Link}}" class="btn btn-primary">Go To Site</a>
+      </div>
+    </div>
+  </div> 
+{% endfor %}</div>
+
+{% for Feed in Feeds %}
+<div id = "Container-{{Feeds.index(Feed)}}">
+<div class="card mb-3">
+          <div class="card-header">
+            <i id = "FeedValue-{{Feeds.index(Feed)}}">{{Feed.GetLink()}}</i><button type="button" class="btn btn-danger col-sm-2 ml-5" id="RemoveFeed-{{Feeds.index(Feed)}}" onclick="OnClickDynamic(this)">Remove Feed</button>
+            </div><div class="row">
+	
+{% for Record in Feed.GetRecords() %}
+  <div class="col-sm-4
+            ">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{Record.Title}}</h5>
+        <p class="card-text">{{Record.Summary}}</p>
+        <a href="{{Record.Link}}" class="btn btn-primary">Go To Site</a>
+      </div>
+    </div>
+  </div> 
+  {% endfor %}
+  </div></div>
+{% endfor %}
+
+
+      </div></div></div>
+      <!-- /.container-fluid -->
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin - Login</title>
+
+  <!-- Custom fonts for this template-->
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/sb-admin.css') }}">
+  <!-- Custom styles for this template-->
+
+</head>
+
+<body class="bg-dark">
+
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Login</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="Username" id="Username" class="form-control" placeholder="Username" required="required">
+              <label for="Username">Username</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="password" id="Password" class="form-control" placeholder="Password" required="required">
+              <label for="Password">Password</label>
+            </div>
+          </div>
+
+          <a class="btn btn-primary btn-block" id ="Login">Login</a>
+		  <a class="btn btn-primary btn-block" id ="Register">Register</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{{url_for('static', filename='js/login.js')}}"></script>
+
+</body>
+
+</html>
